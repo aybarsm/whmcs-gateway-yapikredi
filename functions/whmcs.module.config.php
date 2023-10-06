@@ -4,6 +4,8 @@ if (!defined("WHMCS")) {
     die("This file cannot be accessed directly");
 }
 
+require_once dirname(__DIR__,3) . DIRECTORY_SEPARATOR . 'autoload.php';
+
 use Aybarsm\Whmcs\Gateway\Yapikredi\Posnet;
 
 function yapikredi_MetaData(): array

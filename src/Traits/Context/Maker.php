@@ -95,18 +95,21 @@ trait Maker
         ];
 
         if (isset($this->validator)) {
-            $result = array_merge($result, [
-                'validation' => [
-                    'successful' => intval($this->validator->passes()),
-                    'failed' => intval($this->validator->fails()),
-                    'errors' => ($this->validator->fails() ? $this->validator->messages()->toArray() : []),
-                    'data' => $this->validator->getData(),
-                    'rules' => $this->validator->getRules(),
-                ]
-            ]);
+            $validation = [
+                'successful' => intval($this->validator->passes()),
+                'failed' => intval($this->validator->fails()),
+                'errors' => ($this->validator->fails() ? $this->validator->messages()->toArray() : []),
+                'rules' => $this->validator->getRules(),
+            ];
+
+            if (parent::getSetting('DEBUG_FULL') === 'YES'){
+                $validation['data'] = $this->validator->getData();
+            }
+
+            $result = array_merge($result, ['validation' => $validation]);
         }
 
-        if ($this->getTaskType() == 'posnetRequest' && isset($this->xml)){
+        if ($this->getTaskType() == 'posnetRequest' && isset($this->xml) && parent::getSetting('DEBUG_FULL') === 'YES'){
             $result = array_merge($result, [
                 'request' => [
                     'body' => [
@@ -118,27 +121,32 @@ trait Maker
         }
 
         if ($this->getTaskType() == 'posnetRequest' && isset($this->response)){
-            $result = array_merge($result, [
-                'response' => [
-                    'statusCode' => $this->response->getStatusCode(),
-                    'reasonPhrase' => $this->response->getReasonPhrase(),
+            $response = [
+                'statusCode' => $this->response->getStatusCode(),
+                'reasonPhrase' => $this->response->getReasonPhrase(),
+            ];
+
+            if (parent::getSetting('DEBUG_FULL') === 'YES'){
+                $response = array_merge($response, [
                     'body' => [
                         'raw' => mb_convert_encoding($this->response->getBody()->__toString(), 'UTF-8', 'ISO-8859-9'),
                         'compiled' => $this->getXmlResponse(),
                     ],
                     'headers' => $this->response->getHeaders(),
-                ],
-            ]);
+                ]);
+            }
+
+            $result = array_merge($result, ['response' => $response]);
         }
 
-        if ($this->getTaskType() == 'posnetRequest' && isset($this->stats)){
+        if ($this->getTaskType() == 'posnetRequest' && isset($this->stats) && parent::getSetting('DEBUG_FULL') === 'YES'){
             $result = array_merge($result, [
                 'hasResponse' => intval($this->stats->hasResponse()),
                 'stats' => $this->stats->getHandlerStats(),
             ]);
         }
 
-        if ($this->getTaskType() == 'posnetRequest' && isset($this->http)){
+        if ($this->getTaskType() == 'posnetRequest' && isset($this->http) && parent::getSetting('DEBUG_FULL') === 'YES'){
             $result = array_merge($result, [
                 'http' => [
                     'config' => Arr::except($this->http->getConfig(), ['handler']),

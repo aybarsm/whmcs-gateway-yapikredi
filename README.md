@@ -1,0 +1,1 @@
+[READ ONLY] Subtree split of the Aybarsm WHMCS Yapikredi component (see aybarsm/whmcs-yapikredi)

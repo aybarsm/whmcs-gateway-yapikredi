@@ -1,0 +1,36 @@
+{
+  "name": "aybarsm/whmcs-gateway-yapikredi",
+  "description": "[READ ONLY] Subtree split of the Aybarsm WHMCS Yapikredi component (see aybarsm/whmcs-yapikredi)",
+  "type": "library",
+  "license": "MIT",
+  "homepage": "https://github.com/aybarsm",
+  "authors": [
+    {
+      "name": "Murat Aybars",
+      "email": "hello@aybarsm.com",
+      "homepage": "https://github.com/aybarsm/whmcs-gateway-yapikredi",
+      "role": "author"
+    }
+  ],
+  "require": {
+    "php": ">=7.4",
+    "ext-simplexml": "*",
+    "ext-json": "*",
+    "aybarsm/whmcs-service": "dev-main",
+    "aybarsm/replacer-service": "dev-main"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "@stable"
+  },
+  "autoload": {
+    "psr-4": {
+      "Aybarsm\\Whmcs\\Gateway\\Yapikredi\\": "src/"
+    }
+  },
+  "config": {
+    "sort-packages": true,
+    "optimize-autoloader": true
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}

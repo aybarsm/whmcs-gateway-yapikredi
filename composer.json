@@ -16,8 +16,8 @@
     "php": ">=7.4",
     "ext-simplexml": "*",
     "ext-json": "*",
-    "aybarsm/whmcs-service": "dev-main",
-    "aybarsm/replacer-service": "dev-main"
+    "aybarsm/whmcs-service": "^1.0",
+    "aybarsm/replacer-service": "^1.0"
   },
   "require-dev": {
     "phpunit/phpunit": "@stable"

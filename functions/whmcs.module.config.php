@@ -4,9 +4,6 @@ if (!defined("WHMCS")) {
     die("This file cannot be accessed directly");
 }
 
-// Module Vendor Autoload
-require_once __DIR__ . DIRECTORY_SEPARATOR . 'module.vendor.autoload.php';
-
 use Aybarsm\Whmcs\Gateway\Yapikredi\Posnet;
 
 function yapikredi_MetaData(): array

@@ -19,9 +19,6 @@
     "aybarsm/whmcs-service": "^1.0",
     "aybarsm/replacer-service": "^1.0"
   },
-  "require-dev": {
-    "phpunit/phpunit": "@stable"
-  },
   "autoload": {
     "psr-4": {
       "Aybarsm\\Whmcs\\Gateway\\Yapikredi\\": "src/"

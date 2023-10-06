@@ -31,6 +31,6 @@ if (($argv[1] ?? '') === 'install'){
     }
     consoleMessage('callback', ($callbackFileExists ? 'deleted' : 'does not exist'), $configFilePath);
 }else {
-    echo "Argument not supplied! Available arguments: install, uninstall\n";
+    echo "Argument not found! Available arguments: install, uninstall\n";
 }
 

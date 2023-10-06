@@ -2,10 +2,10 @@
 
 $vendorAutoload = "require_once implode(DIRECTORY_SEPARATOR, [__DIR__, basename(__FILE__, '.php'), 'vendor', 'autoload.php']);";
 $configFilePath = dirname(__DIR__, 4) . DIRECTORY_SEPARATOR . 'yapikredi.php';
-$configFileContent = "<?php \n\n{$vendorAutoload}\n\n require_once implode(DIRECTORY_SEPARATOR, [__DIR__, basename(__FILE__, '.php'), 'vendor', 'aybarsm', 'whmcs-gateway-yapikredi', 'functions', 'whmcs.module.config.php']);";
+$configFileContent = "<?php \n\nrequire_once implode(DIRECTORY_SEPARATOR, [__DIR__, basename(__FILE__, '.php'), 'vendor', 'autoload.php']);\n\nrequire_once implode(DIRECTORY_SEPARATOR, [__DIR__, basename(__FILE__, '.php'), 'vendor', 'aybarsm', 'whmcs-gateway-yapikredi', 'functions', 'whmcs.module.config.php']);";
 $configFileExists = file_exists($configFilePath);
 $callbackFilePath = dirname(__DIR__, 4) . DIRECTORY_SEPARATOR . 'callback' . DIRECTORY_SEPARATOR . 'yapikredi.php';
-$callbackFileContent = "<?php \n\n{$vendorAutoload}\n\n require_once implode(DIRECTORY_SEPARATOR, [dirname(__DIR__), basename(__FILE__, '.php'), 'vendor', 'aybarsm', 'whmcs-gateway-yapikredi', 'functions', 'whmcs.module.callback.php']);";
+$callbackFileContent = "<?php \n\nrequire_once implode(DIRECTORY_SEPARATOR, [dirname(__DIR__), basename(__FILE__, '.php'), 'vendor', 'autoload.php']);\n\nrequire_once implode(DIRECTORY_SEPARATOR, [dirname(__DIR__), basename(__FILE__, '.php'), 'vendor', 'aybarsm', 'whmcs-gateway-yapikredi', 'functions', 'whmcs.module.callback.php']);";
 $callbackFileExists = file_exists($callbackFilePath);
 function consoleMessage(string $fileType, string $status, string $path){
     echo "Gateway module WHMCS {$fileType} file {$status}: {$path}\n";

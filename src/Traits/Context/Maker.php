@@ -99,11 +99,13 @@ trait Maker
                 'successful' => intval($this->validator->passes()),
                 'failed' => intval($this->validator->fails()),
                 'errors' => ($this->validator->fails() ? $this->validator->messages()->toArray() : []),
-                'rules' => $this->validator->getRules(),
             ];
 
             if (parent::getSetting('DEBUG_FULL') === 'YES'){
-                $validation['data'] = $this->validator->getData();
+                $validation = array_merge($validation, [
+                    'data' => $this->validator->getData(),
+                    'rules' => $this->validator->getRules(),
+                ]);
             }
 
             $result = array_merge($result, ['validation' => $validation]);

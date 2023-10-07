@@ -47,7 +47,4 @@ abstract class AbstractPosnetContext extends AbstractPosnet
     abstract protected function getTaskTermination(string $status);
     abstract protected function getTaskType();
 
-
-
-
 }

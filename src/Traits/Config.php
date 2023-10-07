@@ -13,7 +13,7 @@ trait Config
     {
         $base = Str::of($key)->lower()->before('.')->__toString();
 
-        $configFilePath = $base === 'module' && Str::startsWith($base, 'context_') ? static::getPath("config/{$base}.php") : dirname(__DIR__)  . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . "{$base}.php";
+        $configFilePath = $base === 'module' && Str::startsWith($base, 'context_') ? static::getPath("config/{$base}.php") : static::getPackagePath("config/{$base}.php");
 
         // Cache only when needed.
         if (! Arr::exists(self::$config, $base) && file_exists($configFilePath)){

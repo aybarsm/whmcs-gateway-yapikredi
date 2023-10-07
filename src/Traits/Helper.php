@@ -17,6 +17,11 @@ trait Helper
         return static::getPath('resources/' . trim($path, '/\\ '));
     }
 
+    protected static function getPackagePath(string $path = ''): string
+    {
+        return static::getPath('vendor/aybarsm/whmcs-gateway-yapikredi/' . trim($path, '/\\ '));
+    }
+
     protected static function getSetting(string $key, $default = null)
     {
         return static::getConfig("gw.{$key}", $default);
